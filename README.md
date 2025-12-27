@@ -22,7 +22,6 @@ graph LR
 
 ## 🛠️ プロジェクト構成
 
-- `recorder/`: 簡易レコーダー (Gamepad API 使用)
 - `editor/`: 高機能エディタ & BLE 転送ツール (React + Vite)
 - `esp/`: ファームウェア (ESP32-S3 / Arduino)
 - `schema/`: JSON データ構造定義
