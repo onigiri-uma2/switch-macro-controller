@@ -6,7 +6,7 @@ PCブラウザでコントローラー操作を記録・編集し、**Bluetooth 
 ```mermaid
 graph LR
     User[Human / Gamepad] -->|Input| Browser[Web Recorder / Editor]
-    Browser -->|BLE (Wireless)| ESP32[M5Stack ATOMS3]
+    Browser -->|BLE Wireless| ESP32[M5Stack ATOMS3]
     ESP32 -->|USB HID| Switch[Nintendo Switch]
 ```
 
@@ -30,7 +30,7 @@ graph LR
 ## 🚀 セットアップ手順
 
 ### 1. ハードウェアの準備
-*   **M5Stack ATOMS3**: 本体
+*   **M5Stack ATOMS3** / **ATOMS3 Lite**: 本体 (Liteにて動作確認済み)
 *   **USB-C ケーブル**: Switch ドック接続用（データ通信対応のもの）
 
 ### 1. ソフトウェアの準備
@@ -75,7 +75,7 @@ npm run build
 ### 1. 接続と準備
 1.  **ATOMS3** を Switch ドックの USB ポートに接続します。
     *   Switch が "Pro Controller" として認識します。
-    *   **ヒント**: 接続しただけでは反応しない場合があります。その際は**ATOMS3 の画面（Button A）を一回押して**、信号を送出させてください。
+    *   **ヒント**: 接続しただけでは反応しない場合があります。その際は**ATOMS3 の画面（Button A）を一回押して**、信号を送出させてください。なお、**初回接続時などでマクロが未転送の場合はボタンを押しても反応しませんが、電源が供給（画面点灯など）されていれば準備OKです**。
 2.  PC で Web エディタ (`http://localhost:5173`) を開きます。
 3.  PC に USB/Bluetooth コントローラーを接続し、エディタ画面で認識されていることを確認します。
 4.  エディタ右上の **「ATOMS3に接続」** をクリックし、ペアリングします。
@@ -95,7 +95,7 @@ npm run build
     *   **回数**: `0` にすると無限ループになります。
     *   **間隔**: ループの間に待機時間を挟むことができます（周回調整に便利です）。
 3.  **「ATOMS3に転送」** ボタンをクリックします。
-4.  LED が緑色に点滅し、転送が完了するのを待ちます。
+4.  本体の **画面（またはLED）** が緑色に点灯し、転送が完了するのを待ちます。
 
 ### 4. オフライン再生
 1.  PC との接続（ブラウザ）を閉じても、マクロは ATOMS3 本体に保存されています。
