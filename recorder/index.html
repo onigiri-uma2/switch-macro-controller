@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Macro Recorder</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --accent-color: #ff3e3e;
+            --secondary-color: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #startBtn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #stopBtn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #downloadBtn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .status {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .monitor {
+            background: #000;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .gamepad-info {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Switch Macro Recorder</h1>
+        <div class="gamepad-info">
+            <label for="gamepadSelect"
+                style="display:block; font-size: 0.9rem; margin-bottom: 0.5rem;">使用するコントローラ:</label>
+            <select id="gamepadSelect"
+                style="width: 100%; padding: 0.5rem; background: #333; color: white; border: 1px solid #555; border-radius: 4px; margin-bottom: 0.5rem;">
+                <option value="">コントローラが見つかりません</option>
+            </select>
+            <div id="gamepadStatus" style="font-size: 0.8rem; color: #aaa;">※表示されない場合はいずれかのボタンを押してください</div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">記録開始</button>
+            <button id="stopBtn" disabled>記録停止</button>
+            <button id="downloadBtn" disabled>ダウンロード</button>
+        </div>
+
+        <div class="status" id="recordingStatus">待機中</div>
+
+        <div class="monitor" id="log"></div>
+    </div>
+
+    <script src="recorder.js"></script>
+</body>
+
+</html>

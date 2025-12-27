@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Switch Macro",
+  "type": "object",
+  "required": ["meta", "events"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "author": { "type": "string" },
+        "version": { "type": "string" },
+        "description": { "type": "string" },
+        "sampling_rate": { "type": "integer", "description": "Sampling interval in ms" }
+      },
+      "required": ["name", "version"]
+    },
+    "loop": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "count": { "type": "integer", "description": "0 for infinite" }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t", "b", "a"],
+        "properties": {
+          "t": { "type": "integer", "description": "Timestamp in ms relative to start" },
+          "b": { "type": "array", "items": { "type": "integer" }, "description": "Button states (array of indices)" },
+          "a": { "type": "array", "items": { "type": "number", "minimum": -1.0, "maximum": 1.0 }, "description": "Axis states (LX, LY, RX, RY)" }
+        }
+      }
+    }
+  }
+}

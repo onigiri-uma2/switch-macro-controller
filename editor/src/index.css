@@ -1,0 +1,307 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #121212;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  min-height: 200px;
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #2d2d2d;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2b2b2b;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.accent-button {
+  background-color: #646cff;
+  color: white;
+}
+
+
+.danger-button {
+  background-color: #ff4646;
+}
+
+/* Layout Utilities */
+.main-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.control-panel {
+  flex: 0 0 300px;
+}
+
+.timeline-container {
+  flex: 1;
+  max-width: 600px;
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.loop-settings {
+  background: #333;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.status-bar {
+  margin: 15px 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .main-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .control-panel {
+    flex: auto;
+    width: 100%;
+  }
+
+  .timeline-container {
+    max-width: 100%;
+  }
+
+  .loop-settings {
+    gap: 10px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .loop-settings label {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+/* Timeline Editor Styles */
+.timeline-editor {
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 500px;
+  border: 1px solid #333;
+}
+
+.timeline-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px 100px 60px;
+  padding: 10px;
+  background: #252525;
+  border-bottom: 1px solid #333;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.timeline-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px 100px 60px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #2d2d2d;
+  align-items: center;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.timeline-row:hover {
+  background: #2a2a2a;
+}
+
+.timeline-row.editing {
+  background: #333;
+  grid-template-columns: 1fr;
+  /* Stacked layout for editing */
+  grid-template-rows: auto;
+  gap: 10px;
+  cursor: default;
+  padding: 15px;
+  border: 1px solid #646cff;
+}
+
+.time-col {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85em;
+}
+
+.delta-time {
+  color: #888;
+  font-size: 0.8em;
+}
+
+.buttons-col {
+  font-family: monospace;
+  color: #ddd;
+}
+
+.stick-col {
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+.row-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-btn {
+  padding: 4px;
+  background: transparent;
+  width: auto;
+  font-size: 1.2em;
+  opacity: 0.5;
+}
+
+.icon-btn:hover {
+  opacity: 1;
+  background: #444;
+}
+
+/* Edit Mode Styles */
+.edit-time-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+}
+
+.delta-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #222;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.edit-buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.btn-toggle {
+  padding: 4px 8px;
+  font-size: 0.8em;
+  background: #222;
+  border: 1px solid #444;
+  color: #888;
+}
+
+.btn-toggle.active {
+  background: #646cff;
+  color: white;
+  border-color: #646cff;
+}
+
+.edit-stick-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-stick-group input {
+  width: 50px;
+  padding: 4px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 4px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}

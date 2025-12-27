@@ -1,0 +1,33 @@
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+
+# Node.js (Editor & Recorder)
+node_modules/
+dist/
+build/
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor (Vite)
+editor/dist/
+editor/node_modules/
+
+# Arduino / ESP32
+*.bin
+*.elf
+*.hex
+*.map
+esp/build/
+.pio/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Arduino IDE 2.x
+.theia/
